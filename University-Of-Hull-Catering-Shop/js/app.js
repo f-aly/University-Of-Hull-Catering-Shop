@@ -296,11 +296,11 @@ function displayCartSummary() {
 // ======= ORDER SUMMARY - CHECKOUTSUCCESSFUL PAGE ======
 // ======================================================
 
-function displayOrderSummary() {
+function displayCashOrderSummary() {
   let orderReference = localStorage.getItem('orderRef');
   orderReference = JSON.parse(orderReference);
   let orderReferenceContainer = document.querySelector('.orderReference-container')
-  if (orderReference && orderReferenceContainer && payedByCashBool) {
+  if (orderReference && orderReferenceContainer && payedByCashBool == true) {
     orderReferenceContainer.innerHTML = `
             <br/>
             <h2>Order Reference #${orderReference}</h2>
@@ -311,18 +311,25 @@ function displayOrderSummary() {
             <br/>
           `;
     displayCartSummary();
-  } else if (orderReference && orderReferenceContainer && payedByCashBool == false) {
+  } 
+}
+
+function displayPaypalOrderSummary() {
+  let orderReference = localStorage.getItem('orderRef');
+  orderReference = JSON.parse(orderReference);
+  let orderReferenceContainer = document.querySelector('.orderPaypalReference-container')
+  if (orderReference && orderReferenceContainer && payedByCashBool == true) {
     orderReferenceContainer.innerHTML = `
-        <br/>
-        <h2>Order Reference #${orderReference}</h2>
-        <h2>Payment Method: PayPal</h2>
-        <hr />
-        <br/>
-        <h2>Order Summary</h2>
-        <br/>
-      `;
+            <br/>
+            <h2>Order Reference #${orderReference}</h2>
+            <h2>Payment Method: Paypal</h2>
+            <hr />
+            <br/>
+            <h2>Order Summary</h2>
+            <br/>
+          `;
     displayCartSummary();
-  }
+  } 
 }
 /*
  - add order erference
@@ -336,7 +343,7 @@ function displayOrderSummary() {
 var payedByCashBool = true;
 
 function payedByCash() {
-  window.location.href = "checkoutSuccessful.html";
+  window.location.href = "cashCheckoutSuccessful.html";
   var orderRef = '';
   var characters = '98765432100123456789';
   var orderRefLength = 6;
@@ -348,7 +355,7 @@ function payedByCash() {
 }
 
 function payedByPayPal() {
-  window.location.href = "checkoutSuccessful.html";
+  window.location.href = "paypalCheckoutSuccessful.html";
   var orderRef = '';
   var characters = '98765432100123456789';
   var orderRefLength = 6;
@@ -356,6 +363,9 @@ function payedByPayPal() {
     orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
   }
   localStorage.setItem('orderRef', orderRef);
+  console.log(payedByCashBool);
+  payedByCashBool = false;
+  console.log(payedByCashBool);
 }
 
 
@@ -370,7 +380,8 @@ function clearStorageAndStartAgain() {
 onLoadCartNumber();
 displayCart();
 
-displayOrderSummary();
+displayCashOrderSummary();
+displayPaypalOrderSummary();
 displayCartSummary();
 
 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@5.0.0/dist/ionicons.min.css" rel="stylesheet">
+    </link>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+    <title>University Of Hull Catering Shop | Shopping Cart </title>
+</head>
+
+<body>
+
+    <header>
+        <div class="overlay">
+            <nav>
+                <h2>UNIVERSITY OF HULL CATERING SHOP</h2>
+                <ul style="visibility: hidden;">
+                    <li>
+                        <a href="index.html">
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span>Home</span>
+                        </a></li>
+                    <li>
+                        <a href="about.html">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <ion-icon name="help-circle-outline"></ion-icon>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                    <li class="cart">
+                        <a href="shoppingCart.html">
+                            <ion-icon name="cart-outline"></ion-icon>
+                            Cart (<span>0</span>)
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <center>
+        <h1>Thank you for your purchase!</h1>
+        <br />
+        <div class="orderPaypalReference-container">
+            <div class="orders">
+                <!-- populated with javascript -->
+
+            </div>
+        </div>
+        <table class="summary-container">
+            <div class="summary">
+                <!-- populated with javascript -->
+            </div>
+        </table>
+        <div class="paymentButtons">
+            <button  class="cartCheckoutButtons" onclick="clearStorageAndStartAgain()">
+                <h4>Make A New Order</h4>
+            </button>
+        </div>
+    </center>
+
+    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body>
+
+</html>
