@@ -98,19 +98,19 @@ let products = [
   },
 
   {
-    name: 'Cheese and Onion Sandwich',
+    name: 'C&O Sandwich',
     tag: 'co-sand',
     price: 2.95,
     inCart: 0
   },
   {
-    name: 'Eggs and Cress Sandwich',
+    name: 'E&C Sandwich',
     tag: 'ec-sand',
     price: 2.95,
     inCart: 0
   },
   {
-    name: 'Mozarella, Tomato and Pesto Sandwich',
+    name: 'MT&P Sandwich',
     tag: 'mtp-sand',
     price: 2.95,
     inCart: 0
@@ -127,7 +127,7 @@ let products = [
 for (let i = 0; i < carts.length; i++) {
   carts[i].addEventListener('click', () => {
     //alert('Succesfully added to cart!');
-    console.log('Succesfully added to cart!' + products[i].name);
+    console.log('Succesfully added to cart!: ' + products[i].name);
     cartNumbers(products[i]);
     totalCost(products[i]);
   });
@@ -147,7 +147,6 @@ function cartNumbers(product) {
 
   productNumbers = parseInt(productNumbers);
   console.log("Local Storage Key: " + productNumbers);
-  console.log("Type: " + typeof productNumbers);
   if (productNumbers) {
     localStorage.setItem('cartNumbers', productNumbers + 1);
     document.querySelector('.cart span').textContent = productNumbers + 1;
@@ -207,9 +206,11 @@ function displayCart() {
   if (cartItems && productContainer) {
     productContainer.innerHTML = '';
     Object.values(cartItems).map(item => { // cheks values of cartItems
+    let itemTotalPrice = item.inCart * item.price;
+    itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
       productContainer.innerHTML += `
         <div class="product" style="float: left">
-          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline" style="align: left"></ion-icon>
           <img style="width: 100px; height: 100px;" src="./gallery/${item.tag}.jpg">
           <span>${item.name}</span>
         </div>
@@ -220,7 +221,7 @@ function displayCart() {
           <ion-icon name="add-circle-outline"></ion-icon>
         </div>
         <div class="total" style="float: left">
-          £ ${item.inCart * item.price}
+          £ ${itemTotalPrice}
         </div>
         <br/>
       `;
@@ -242,14 +243,98 @@ function displayCart() {
         <button class="cartCheckoutButtons" onclick="window.location.href='payment.html'">
           <h4>Proceed to Payment</h4>
         </button>
-      </div>
+      </div>   
     
     </center>
 
 
     `;
+  } 
+}
+
+// ==========================================
+// ======= CART SUMMARY - PAYMENT PAGE ======
+// ==========================================
+
+function displayCartSummary() {
+  let cartItems = localStorage.getItem("productsInCart");
+  cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js
+  let summaryContainer = document.querySelector(".summary-container"); //checks if products-container exists on page
+  let proceedToPaymentContainer = document.querySelector(".proceedToPayment");
+  let cartCost = localStorage.getItem('totalCost');
+  // 
+  if (cartItems && summaryContainer) {
+    summaryContainer.innerHTML = '';
+    Object.values(cartItems).map(item => { // cheks values of cartItems
+    let itemTotalPrice = item.inCart * item.price;
+    itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
+      summaryContainer.innerHTML += `
+        <tr>
+          <td>&nbsp;</td>
+          <td>x${item.inCart}</td>
+          <td>${item.name}</td>
+          <td>£ ${item.price}</td>
+        </tr>
+      `;
+    });
+    proceedToPaymentContainer.innerHTML = `
+       <h3>
+          Total to Pay:  £ ${cartCost}</h3>
+      `;
+  }
+  else {
+    summaryContainer.innerHTML += `
+    <center>
+       <h4>404 - Nothing to pay for.</h4>
+       <h5>Please go back to the home page.</h5>
+    </center>
+      `;
   }
 }
 
+// ======================================================
+// ======= ORDER SUMMARY - CHECKOUTSUCCESSFUL PAGE ======
+// ======================================================
+
+function displayOrderSummary() {
+  let orderReference = localStorage.getItem('orderRef');  
+  orderReference = JSON.parse(orderReference);
+  let orderReferenceContainer = document.querySelector('.orderReference-container')
+      if (orderReference && orderReferenceContainer){
+          orderReferenceContainer.innerHTML = `
+            <h2>Order Reference #${orderReference}</h2>
+          `;
+          
+      }
+  
+}
+ /*
+  - add order erference
+  - try to use bools to make difference between paypal and cash payment
+  - clear lcoalstorage and go back to main page if successful
+
+  - implement paypal to take order elements for details
+  - add paymentfailed 
+*/
+
+
+function goToCheckoutSuccessful() {
+  window.location.href = "checkoutSuccessful.html";
+  var orderRef  = '';
+  var characters = '98765432100123456789';
+  var orderRefLength = 6;
+  for ( var i = 0; i < orderRefLength; i++ ) {
+    orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
+  }
+  localStorage.setItem('orderRef', orderRef)
+
+}
+
+// ======================================================
+// =============== TO RUN BEFORE PAGE LOADS =============
+// ======================================================
 onLoadCartNumber();
 displayCart();
+
+  displayOrderSummary();
+  displayCartSummary();
