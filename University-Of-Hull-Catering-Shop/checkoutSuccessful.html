@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/ionicons@5.0.0/dist/ionicons.min.css" rel="stylesheet"></link>
+    <link href="https://unpkg.com/ionicons@5.0.0/dist/ionicons.min.css" rel="stylesheet">
+    </link>
     <link href="css/main.css" rel="stylesheet" type="text/css">
 
     <title>University Of Hull Catering Shop | Shopping Cart </title>
 </head>
+
 <body>
 
     <header>
@@ -23,7 +25,8 @@
                             <span>Home</span>
                         </a></li>
                     <li>
-                        <a href="about.html"><ion-icon name="information-circle-outline"></ion-icon>
+                        <a href="about.html">
+                            <ion-icon name="information-circle-outline"></ion-icon>
                             <span>About</span>
                         </a>
                     </li>
@@ -52,19 +55,26 @@
     <br />
 
     <center>
+        <h1>Thank you for your purchase!</h1>
+        <br />
+        <div class="orderReference-container">
+            <div class="orders">
+                <!-- populated with javascript -->
 
-   
-
-    <h1>Order Summary</h1>
-    <br/>
-<div class="orderReference-container">
-    <div class="orders">
-        <!-- populated with javascript -->
-     
-    </div>
-</div>
+            </div>
+        </div>
+        <table class="summary-container">
+            <div class="summary">
+                <!-- populated with javascript -->
+            </div>
+        </table>
+        <div class="paymentButtons">
+            <button  class="cartCheckoutButtons" onclick="clearStorageAndStartAgain()">
+                <h4>Make A New Order</h4>
+            </button>
+        </div>
     </center>
-   
+
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>

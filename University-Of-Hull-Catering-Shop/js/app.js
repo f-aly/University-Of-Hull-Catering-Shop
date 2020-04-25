@@ -302,10 +302,19 @@ function displayOrderSummary() {
   let orderReferenceContainer = document.querySelector('.orderReference-container')
       if (orderReference && orderReferenceContainer){
           orderReferenceContainer.innerHTML = `
+            <br/>
             <h2>Order Reference #${orderReference}</h2>
-          `;
-          
+            <h2>Payment Method: Cash</h2>
+            <hr />
+            <br/>
+            <h2>Order Summary</h2>
+            <br/>
+          `; 
+        displayCartSummary();         
       }
+
+      
+  
   
 }
  /*
@@ -327,7 +336,13 @@ function goToCheckoutSuccessful() {
     orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
   }
   localStorage.setItem('orderRef', orderRef)
+  
+}
 
+
+function clearStorageAndStartAgain(){
+  window.location.href = "index.html";
+  localStorage.clear();
 }
 
 // ======================================================
@@ -336,5 +351,5 @@ function goToCheckoutSuccessful() {
 onLoadCartNumber();
 displayCart();
 
-  displayOrderSummary();
-  displayCartSummary();
+displayOrderSummary();
+displayCartSummary();
