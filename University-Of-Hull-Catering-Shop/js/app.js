@@ -206,8 +206,8 @@ function displayCart() {
   if (cartItems && productContainer) {
     productContainer.innerHTML = '';
     Object.values(cartItems).map(item => { // cheks values of cartItems
-    let itemTotalPrice = item.inCart * item.price;
-    itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
+      let itemTotalPrice = item.inCart * item.price;
+      itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
       productContainer.innerHTML += `
         <div class="product" style="float: left">
           <ion-icon name="close-circle-outline" style="align: left"></ion-icon>
@@ -249,7 +249,7 @@ function displayCart() {
 
 
     `;
-  } 
+  }
 }
 
 // ==========================================
@@ -266,8 +266,8 @@ function displayCartSummary() {
   if (cartItems && summaryContainer) {
     summaryContainer.innerHTML = '';
     Object.values(cartItems).map(item => { // cheks values of cartItems
-    let itemTotalPrice = item.inCart * item.price;
-    itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
+      let itemTotalPrice = item.inCart * item.price;
+      itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
       summaryContainer.innerHTML += `
         <tr>
           <td>&nbsp;</td>
@@ -297,50 +297,69 @@ function displayCartSummary() {
 // ======================================================
 
 function displayOrderSummary() {
-  let orderReference = localStorage.getItem('orderRef');  
+  let orderReference = localStorage.getItem('orderRef');
   orderReference = JSON.parse(orderReference);
   let orderReferenceContainer = document.querySelector('.orderReference-container')
-      if (orderReference && orderReferenceContainer){
-          orderReferenceContainer.innerHTML = `
+  if (orderReference && orderReferenceContainer && payedByCashBool) {
+    orderReferenceContainer.innerHTML = `
             <br/>
             <h2>Order Reference #${orderReference}</h2>
-            <h2>Payment Method: Cash</h2>
+            <h2>Payment Method: Cash At Collection</h2>
             <hr />
             <br/>
             <h2>Order Summary</h2>
             <br/>
-          `; 
-        displayCartSummary();         
-      }
-
-      
-  
-  
+          `;
+    displayCartSummary();
+  } else if (orderReference && orderReferenceContainer && payedByCashBool == false) {
+    orderReferenceContainer.innerHTML = `
+        <br/>
+        <h2>Order Reference #${orderReference}</h2>
+        <h2>Payment Method: PayPal</h2>
+        <hr />
+        <br/>
+        <h2>Order Summary</h2>
+        <br/>
+      `;
+    displayCartSummary();
+  }
 }
- /*
-  - add order erference
-  - try to use bools to make difference between paypal and cash payment
-  - clear lcoalstorage and go back to main page if successful
+/*
+ - add order erference
+ - try to use bools to make difference between paypal and cash payment
+ - clear lcoalstorage and go back to main page if successful
 
-  - implement paypal to take order elements for details
-  - add paymentfailed 
+ - implement paypal to take order elements for details
+ - add paymentfailed 
 */
 
+var payedByCashBool = true;
 
-function goToCheckoutSuccessful() {
+function payedByCash() {
   window.location.href = "checkoutSuccessful.html";
-  var orderRef  = '';
+  var orderRef = '';
   var characters = '98765432100123456789';
   var orderRefLength = 6;
-  for ( var i = 0; i < orderRefLength; i++ ) {
+  for (var i = 0; i < orderRefLength; i++) {
     orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
   }
-  localStorage.setItem('orderRef', orderRef)
-  
+  localStorage.setItem('orderRef', orderRef);
+  payedByCash = true;
+}
+
+function payedByPayPal() {
+  window.location.href = "checkoutSuccessful.html";
+  var orderRef = '';
+  var characters = '98765432100123456789';
+  var orderRefLength = 6;
+  for (var i = 0; i < orderRefLength; i++) {
+    orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
+  }
+  localStorage.setItem('orderRef', orderRef);
 }
 
 
-function clearStorageAndStartAgain(){
+function clearStorageAndStartAgain() {
   window.location.href = "index.html";
   localStorage.clear();
 }
@@ -353,3 +372,53 @@ displayCart();
 
 displayOrderSummary();
 displayCartSummary();
+
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+
+paypal.Button.render({
+
+  // Configure environment
+  env: 'sandbox',
+  client: {
+    sandbox: 'AYbCNBxQmjqgAFsJIjQpMI30072iJoU5xDSMYrPx9SxM12zjD14_93_9xuVbJCV-8FcfBGFIEztLEZMY',
+    //  production: 'demo_production_client_id'
+  },
+  // Customize button (optional)
+  locale: 'en_GB',
+  style: {
+    size: 'small',
+    color: 'gold',
+    shape: 'pill',
+  },
+
+  // Enable Pay Now checkout flow (optional)
+  commit: true,
+
+  // Set up a payment
+  // Set up a payment
+  payment: function (data, actions) {
+    let totalCost = localStorage.getItem('totalCost');
+    totalCost = parseFloat(totalCost);
+
+    return actions.payment.create({
+      transactions: [{
+        amount: {
+          total: totalCost,
+          currency: 'GBP'
+        },
+      }],
+      note_to_payer: 'Contact us for any questions on your order.'
+    });
+  },
+  onAuthorize: function (data, actions) {
+    return actions.payment.execute().then(function () {
+      // Show a confirmation message to the buyer
+      payedByCashBool = false;
+      payedByPayPal();
+    });
+  }
+}, '#paypal-button');
