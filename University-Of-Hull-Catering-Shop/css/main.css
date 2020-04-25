@@ -154,7 +154,8 @@ li a {
 .add-cart {
     position: absolute;
     width: 100%;
-    background-color: darkseagreen;
+    background-color: white;
+    color: black;
     transition: all 0.3s ease-in-out;
     opacity: 0;
     cursor: pointer;

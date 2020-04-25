@@ -66,13 +66,19 @@
     <div class="proceedToPayment">
 
     </div>
-    <div class="paymentButtons">
 
-        <button class="cartCheckoutButtons" onclick="payedByCash()">
-            <h4>Pay At Collection</h4>
-        </button>
-    </div>
-    <div id="paypal-button"></div> 
+    <table>
+        <tr>
+            <td>
+                <button class="cartCheckoutButtons" onclick="payedByCash()">
+                    <h4>Pay At Collection</h4>
+                </button></td>
+            <td>
+                <div id="paypal-button" style="width: 100%"></div>
+            </td>
+
+        </tr>
+    </table>
 
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="js/app.js"></script>
