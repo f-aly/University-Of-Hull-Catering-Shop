@@ -65,9 +65,15 @@
   }
 /**/
 header {
-    height: 150;
+    max-height: 100;
     position: relative;
     color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .tab {
+    visibility: hidden;
+}
 }
 
 nav { 
