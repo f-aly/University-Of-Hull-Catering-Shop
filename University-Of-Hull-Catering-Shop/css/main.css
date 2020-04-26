@@ -13,11 +13,13 @@
 
 
 /*----- Tabs ------ */
+
 /* Style the tab */
 .tab {
     overflow: hidden;
     /* border: 1px solid #ccc; */
     background-color: black;
+    height: 100%;
   }
   
   /* Style the buttons inside the tab */
@@ -31,13 +33,9 @@
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    
   }
   
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: rgba(31, 2, 2, 0.164);
-    color: white;
-  }
   
   /* Create an active/current tablink class */
   .tab button.active {
@@ -71,15 +69,57 @@ header {
 }
 
 @media only screen and (max-width: 800px) {
-  .tab {
-    visibility: hidden;
+
+
+/* Style the tab */
+.tab {
+  float: left;
+  width: 30%;
+  height: 2500px;
 }
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  padding: 22px 16px;
+  width: 100%;
+  text-align: left;
+}
+
+
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    width: 70%;
+    border-left: none;
+  }
+
+  .allProducts {
+    align-content: center;
+    padding-top: 50px;
+    transform: scale(0.7);
+  }
+
+  .allProducts h3 {
+    align-self: center;
+  }
+
+  .overlay {
+    transform: scaleY(0.7);
+  }
+  .overlay h2{
+    transform: scale(0.7);
+  }
+  .overlay a {
+    transform: scaleX(0.7);
+  }
+
 }
 
 nav { 
     /* background-image: url('../gallery/header-background-black.jpg'); */
     background-color: black;
-    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -211,6 +251,7 @@ li a {
 
 .product-title {
   width: 45%;
+  border-bottom: 1px solid lightgrey;
 }
 
 .price {

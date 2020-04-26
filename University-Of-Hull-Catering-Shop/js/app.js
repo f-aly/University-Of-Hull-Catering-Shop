@@ -17,6 +17,14 @@ window.onload = function () {
   document.getElementById("defaultOpen").click();
 };
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // get all elements with this class
 let carts = document.querySelectorAll('.add-cart');
 
@@ -210,15 +218,12 @@ function displayCart() {
       itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
       productContainer.innerHTML += `
         <div class="product" style="float: left">
-          <ion-icon name="close-circle-outline" style="align: left"></ion-icon>
           <img style="width: 100px; height: 100px;" src="./gallery/${item.tag}.jpg">
           <span>${item.name}</span>
         </div>
         <div class="price" style="float: left">£ ${item.price}</div>
         <div class="quantity" style="float: left">
-          <ion-icon name="remove-circle-outline"></ion-icon>
             <span>${item.inCart}</span>
-          <ion-icon name="add-circle-outline"></ion-icon>
         </div>
         <div class="total" style="float: left">
           £ ${itemTotalPrice}

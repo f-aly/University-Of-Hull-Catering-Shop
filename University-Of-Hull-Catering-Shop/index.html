@@ -10,9 +10,8 @@
     <title>University Of Hull Catering Shop</title>
 </head>
 
-<body>
-
-      <header>
+<body style="background-color: white;">
+    <header>
         <div class="overlay">
             <nav>
                 <h2>UNIVERSITY OF HULL CATERING SHOP</h2>
@@ -51,130 +50,25 @@
     <br />
     <br />
     <br />
-        
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'allItems')" id="defaultOpen">All</button>
-        <button class="tablinks" onclick="openTab(event, 'sandwiches')">Sandwiches</button>
-        <button class="tablinks" onclick="openTab(event, 'softDrinks')">Soft Drinks</button>
-        <button class="tablinks" onclick="openTab(event, 'snacks')">Snacks</button>
+
+    <div class="tab" style="background-color: black;">
+        <button  disabled></button>
+        <button class="tablinks" onclick="openTab(event, 'softDrinks')" id="defaultOpen">Soft Drinks</button>
         <button class="tablinks" onclick="openTab(event, 'hotDrinks')">Hot Drinks</button>
         <button class="tablinks" onclick="openTab(event, 'desserts')">Desserts</button>
-    </div> 
-
-
-
-    <div id="allItems" class=tabcontent>
-        <div class="container">
-            <div class="image">
-                <img src="gallery/co-sand.jpg" alt="cheese and onion">
-                <h3>Cheese and Onion</h3>
-                <h3>£ 2.95</h3>
-                <a class="add-cart cart12" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/ec-sand.jpg" alt="eggs and cress">
-                <h3>Eggs and Cress</h3>
-                <h3>£ 2.95</h3>
-                <a class="add-cart cart13" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/mtp-sand.jpg" alt="mozarella, tomato and pesto">
-                <h3>Mozarella, Tomato and Pesto</h3>
-                <h3>£ 2.95</h3>
-                <a class="add-cart cart14" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/apple-juice.jpg" alt="apple-juice">
-                <h3>Apple Juice</h3>
-                <h3>£ 1.00</h3>
-                <a class="add-cart cart16" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/orange-juice.jpg" alt="orange-juice">
-                <h3>Orange Juice</h3>
-                <h3>£ 1.00</h3>
-                <a class="add-cart cart3" href="#">Add To Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="gallery/7-up.jpg" alt="7-up">
-                <h3>7-Up</h3>
-                <h3>£ 1.20</h3>
-                <a class="add-cart cart1" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/coca-cola.jpg" alt="coca-cola">
-                <h3>Coca Cola</h3>
-                <h3>£ 1.20</h3>
-                <a class="add-cart cart2" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/sparkling-water.jpg" alt="sparkling-water">
-                <h3>Sparkling Water</h3>
-                <h3>£ 0.85</h3>
-                <a class="add-cart cart4" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/still-water.jpg" alt="still-water">
-                <h3>Still Water</h3>
-                <h3>£ 0.85</h3>
-                <a class="add-cart cart5" href="#">Add To Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="gallery/crisps.jpg" alt="crisps">
-                <h3>Crisps</h3>
-                <h3>£ 0.65</h3>
-                <a class="add-cart cart15" href="#">Add To Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="gallery/tea.jpg" alt="tea">
-                <h3>Tea</h3>
-                <h3>£ 1.85</h3>
-                <a class="add-cart cart6" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/black-coffee.jpg" alt="black-coffee">
-                <h3>Black Coffee</h3>
-                <h3>£ 1.85</h3>
-                <a class="add-cart cart7" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/caramel-macchiato.jpg" alt="caramel-macchiato">
-                <h3>Caramel Macchiato</h3>
-                <h3>£ 2.15</h3>
-                <a class="add-cart cart8" href="#">Add To Cart</a>
-            </div>
-
-            <div class="image">
-                <img src="gallery/brownie.jpg" alt="brownie">
-                <h3>Brownies</h3>
-                <h3>£ 1.85 <span>per slice</span></h3>
-                <a class="add-cart cart9" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/chocolate-mousse.jpg" alt="chocolate-mousse">
-                <h3>Chocolate Mousse</h3>
-                <h3>£ 2.85</h3>
-                <a class="add-cart cart10" href="#">Add To Cart</a>
-            </div>
-            <div class="image">
-                <img src="gallery/cookies.jpg" alt="cookies">
-                <h3>Cookie</h3>
-                <h3>£ 0.85 <span>per cookie</span></h3>
-                <a class="add-cart cart11" href="#">Add To Cart</a>
-            </div>
-
-        </div>
+        <button class="tablinks" onclick="openTab(event, 'sandwiches')">Sandwiches</button>
+        <button class="tablinks" onclick="openTab(event, 'snacks')">Snacks</button>
     </div>
-    <div id="softDrinks" class="tabcontent">
-        <br />
+<div class="allProducts">
+ <div id="softDrinks" class="tabcontent">
+        <br/>
+        <br/>
         <center>
             <h1>Soft Drinks</h1>
         </center>
-        <br />
         <div class="container">
+            <br/>
+            <br/>
             <div class="image">
                 <img src="gallery/apple-juice.jpg" alt="apple-juice">
                 <h3>Apple Juice</h3>
@@ -211,13 +105,11 @@
                 <h3>£ 0.85</h3>
                 <a class="add-cart cart5" href="#">Add To Cart</a>
             </div>
-
-            
-
         </div>
     </div>
 
     <div id="hotDrinks" class="tabcontent">
+        <br/>
         <br/>
         <center>
             <h1>Hot Drinks</h1>
@@ -246,6 +138,7 @@
 
     <div id="desserts" class="tabcontent">
         <br/>
+        <br/>
         <center>
             <h1>Desserts</h1>
         </center>
@@ -273,6 +166,7 @@
 
     <div id="sandwiches" class="tabcontent">
         <br/>
+        <br/>
         <center>
             <h1>Sandwiches</h1>
         </center>
@@ -299,6 +193,7 @@
     </div>
     <div id="snacks" class="tabcontent">
         <br/>
+        <br/>
         <center>
             <h1>Snacks</h1>
         </center>
@@ -311,6 +206,8 @@
             </div>
         </div>
     </div>
+</div>
+   
 
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
