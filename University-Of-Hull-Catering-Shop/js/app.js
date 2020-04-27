@@ -242,10 +242,10 @@ function displayCart() {
 
     <center>
       <div class="checkoutContainer">
-        <button class="cartCheckoutButtons" onclick="window.location.href='index.html'">
+        <button class="cartCheckoutButtons buttons" onclick="window.location.href='index.html'">
           <h4>Continue Shopping</h4>
         </button>
-        <button class="cartCheckoutButtons" onclick="window.location.href='payment.html'">
+        <button class="cartCheckoutButtons buttons" onclick="window.location.href='payment.html'">
           <h4>Proceed to Payment</h4>
         </button>
       </div>   

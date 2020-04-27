@@ -116,7 +116,11 @@ header {
   }
 
 }
-
+.buttons {
+  color: white;
+  background-color: black;
+  border-radius: 15px;
+}
 nav { 
     /* background-image: url('../gallery/header-background-black.jpg'); */
     background-color: black;
