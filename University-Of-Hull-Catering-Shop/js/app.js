@@ -407,7 +407,7 @@ paypal.Button.render({
   locale: 'en_GB',
   style: {
     size: 'small',
-    color: 'gold',
+    color: 'black',
     shape: 'pill',
   },
 
