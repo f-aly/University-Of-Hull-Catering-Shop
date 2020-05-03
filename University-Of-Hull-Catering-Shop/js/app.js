@@ -368,9 +368,7 @@ function payedByPayPal() {
     orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
   }
   localStorage.setItem('orderRef', orderRef);
-  console.log(payedByCashBool);
   payedByCashBool = false;
-  console.log(payedByCashBool);
 }
 
 
@@ -411,10 +409,6 @@ paypal.Button.render({
     shape: 'pill',
   },
 
-  // Enable Pay Now checkout flow (optional)
-  commit: true,
-
-  // Set up a payment
   // Set up a payment
   payment: function (data, actions) {
     let totalCost = localStorage.getItem('totalCost');
