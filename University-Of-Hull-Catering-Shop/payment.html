@@ -18,7 +18,7 @@
         <div class="overlay">
             <nav>
                 <h2>UNIVERSITY OF HULL CATERING SHOP</h2>
-                <ul style="visibility: hidden">
+                <ul style="visibility: hidden;">
                     <li>
                         <a href="index.html">
                             <ion-icon name="home-outline"></ion-icon>
@@ -43,6 +43,7 @@
                         </a>
                     </li>
                 </ul>
+                <p>Hello, <span id="displayUsername"></span>!</p>
             </nav>
         </div>
     </header>
@@ -79,6 +80,14 @@
 
         </tr>
     </table>
+
+    <p id="sendToPaypal">
+        <p class="order-to-mail" id="Order-To-Mail">
+            <!-- populated with javascript -->
+        </p>
+         <p class="summary-to-mail"  id="Summary-To-Mail">
+         </p>
+    </p>
 
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="js/app.js"></script>

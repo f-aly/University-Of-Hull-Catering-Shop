@@ -18,6 +18,9 @@ window.onload = function () {
 };
 
 
+let usernameToDisplay = localStorage.getItem('currentUserId');
+document.getElementById("displayUsername").innerHTML = usernameToDisplay;
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -260,14 +263,19 @@ function displayCart() {
 // ==========================================
 // ======= CART SUMMARY - PAYMENT PAGE ======
 // ==========================================
-
-function displayCartSummary() {
+function generateOrderSummary() {
+  let orderReference = localStorage.getItem("orderRef");
+  orderReference = JSON.parse(orderReference);
   let cartItems = localStorage.getItem("productsInCart");
-  cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js
+  cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js  
   let summaryContainer = document.querySelector(".summary-container"); //checks if products-container exists on page
+
   let proceedToPaymentContainer = document.querySelector(".proceedToPayment");
   let cartCost = localStorage.getItem('totalCost');
-  // 
+  
+  let orderToMail = document.querySelector(".order-to-mail");
+  let summaryToMail = document.querySelector(".summary-to-mail");
+
   if (cartItems && summaryContainer) {
     summaryContainer.innerHTML = '';
     Object.values(cartItems).map(item => { // cheks values of cartItems
@@ -281,11 +289,42 @@ function displayCartSummary() {
           <td>£ ${item.price}</td>
         </tr>
       `;
-    });
+      
+      orderToMail.innerHTML = `<span>Order Reference #${orderReference}</span><br/>`;
+      summaryToMail.innerHTML += `          
+          <span>x${item.inCart}</span>
+           - <span>${item.name}</span>
+           - <span>£ ${item.price}</span><br/>
+       
+       `;
+    }); 
+    
     proceedToPaymentContainer.innerHTML = `
-       <h3>
-          Total to Pay:  £ ${cartCost}</h3>
-      `;
+    <h3>
+       Total to Pay:  £ ${cartCost}</h3>
+   `;
+        
+
+    // var orderInLocal;
+    // if (document.getElementById("Order-To-Mail").innerHTML == null)
+    //   orderInLocal = 0; 
+    // else 
+    //   orderInLocal = document.getElementById("Order-To-Mail").innerHTML;
+      
+    // var summaryInLocal = document.getElementById("Summary-To-Mail").innerHTML;
+    // var SendToLocal = orderInLocal + summaryInLocal;
+    // localStorage.setItem("OrderSummaryForPayPal", SendToLocal);
+
+
+
+      
+   
+
+
+  // localStorage.setItem("inPayPalEmail", toStoreInLocal);
+  // 
+  // console.log(toStoreInLocal);
+  // 
   }
   else {
     summaryContainer.innerHTML += `
@@ -296,6 +335,11 @@ function displayCartSummary() {
       `;
   }
 }
+function displayCartSummary() {
+  makeAnOrderId();
+  generateOrderSummary();
+
+}
 
 // ======================================================
 // ======= ORDER SUMMARY - CHECKOUTSUCCESSFUL PAGE ======
@@ -305,6 +349,10 @@ function displayCashOrderSummary() {
   let orderReference = localStorage.getItem('orderRef');
   orderReference = JSON.parse(orderReference);
   let orderReferenceContainer = document.querySelector('.orderReference-container')
+  
+  let orderToMail = document.querySelector(".order-to-mail");
+
+
   if (orderReference && orderReferenceContainer && payedByCashBool == true) {
     orderReferenceContainer.innerHTML = `
             <br/>
@@ -315,8 +363,10 @@ function displayCashOrderSummary() {
             <h2>Order Summary</h2>
             <br/>
           `;
-    displayCartSummary();
+          orderToMail.innerHTML = `<span  id="Order-To-Mail">Order Reference #${orderReference}</span><br/><br/>`;
+          generateOrderSummary();
   } 
+
 }
 
 function displayPaypalOrderSummary() {
@@ -333,7 +383,7 @@ function displayPaypalOrderSummary() {
             <h2>Order Summary</h2>
             <br/>
           `;
-    displayCartSummary();
+    generateOrderSummary();
   } 
 }
 /*
@@ -349,29 +399,25 @@ var payedByCashBool = true;
 
 function payedByCash() {
   window.location.href = "cashCheckoutSuccessful.html";
-  var orderRef = '';
-  var characters = '98765432100123456789';
-  var orderRefLength = 6;
-  for (var i = 0; i < orderRefLength; i++) {
-    orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
-  }
-  localStorage.setItem('orderRef', orderRef);
+  // makeAnOrderId();
   payedByCash = true;
 }
 
 function payedByPayPal() {
   window.location.href = "paypalCheckoutSuccessful.html";
+  //makeAnOrderId();
+  payedByCashBool = false;
+}
+
+function makeAnOrderId() { 
   var orderRef = '';
-  var characters = '98765432100123456789';
+  var characters = '123456789';
   var orderRefLength = 6;
   for (var i = 0; i < orderRefLength; i++) {
     orderRef += characters.charAt(Math.floor(Math.random() * orderRefLength));
   }
   localStorage.setItem('orderRef', orderRef);
-  payedByCashBool = false;
 }
-
-
 function clearStorageAndStartAgain() {
   window.location.href = "index.html";
   localStorage.clear();
@@ -412,6 +458,7 @@ paypal.Button.render({
   // Set up a payment
   payment: function (data, actions) {
     let totalCost = localStorage.getItem('totalCost');
+    let orderDescription = localStorage.getItem('')
     totalCost = parseFloat(totalCost);
 
     return actions.payment.create({
@@ -421,7 +468,7 @@ paypal.Button.render({
           currency: 'GBP'
         },
       }],
-      note_to_payer: 'Contact us for any questions on your order.'
+      note_to_payer: document.getElementById('Order-To-Mail').textContent + document.getElementById('Summary-To-Mail').textContent
     });
   },
   onAuthorize: function (data, actions) {
