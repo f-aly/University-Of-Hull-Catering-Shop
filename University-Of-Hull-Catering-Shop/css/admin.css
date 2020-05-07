@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+/*===============================================================*/
+/*===============================================================*/
+/*===========================INDEX.HTML==========================*/
+/*===============================================================*/
+/*===============================================================*/
+
+
+/*----- Tabs ------ */
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    /* border: 1px solid #ccc; */
+    background-color: black;
+    height: 100%;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    
+  }
+  
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: white;
+    color: black
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+  
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+/**/
+header {
+    max-height: 100;
+    position: relative;
+    color: white;
+}
+
+@media only screen and (max-width: 800px) {
+
+
+/* Style the tab */
+.tab {
+  float: left;
+  width: 30%;
+  height: 2500px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  padding: 22px 16px;
+  width: 100%;
+  text-align: left;
+}
+
+
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    width: 70%;
+    border-left: none;
+  }
+
+  .allTabs {
+    align-content: center;
+    padding-top: 50px;
+    transform: scale(0.7);
+  }
+
+  .allTabs h3 {
+    align-self: center;
+  }
+
+  .overlay {
+    transform: scaleY(0.7);
+  }
+  .overlay h2{
+    transform: scale(0.7);
+  }
+  .overlay a {
+    transform: scaleX(0.7);
+  }
+
+}
+.buttons {
+  color: white;
+  background-color: black;
+  border-radius: 15px;
+}
+nav { 
+    /* background-image: url('../gallery/header-background-black.jpg'); */
+    background-color: black;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: rgba(10,10,10, 0.3);
+}
+
+nav li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+
+nav li span {
+    padding-left: 5px;
+}
+
+
+li ion-icon {
+    vertical-align: bottom;
+    font-size: 20px;
+    padding-right: 5px;
+}
+
+li a {
+    padding : 5px;
+    background-color: white;
+    text-decoration: none;
+
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.image img {
+    height: 300px;
+    width: 300px;
+}
+
+/*/////////////////////////////////////////////////*/
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #dddddd;
+}
+
+/*-----------------------------------------*/
+.accordion {
+  border: 1px solid;
+  border-color: black;
+  border-bottom: none;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+#snacks {
+  border-bottom: 1px solid;
+  border-color: black;
+}
+
+.active, .accordion:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.accordion:after {
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}

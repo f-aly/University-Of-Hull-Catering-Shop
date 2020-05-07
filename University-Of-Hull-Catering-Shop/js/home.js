@@ -30,17 +30,46 @@ function getInfo() {
     var password = document.getElementById('password').value
 
     for(i = 0; i < dummyAccounts.length; i++){
-        if(username == dummyAccounts[i].username && password == dummyAccounts[i].password){
+        if (username == dummyAccounts[i].username && password == dummyAccounts[i].password) {
+
+
+            if (username == 'admin' && password == 'admin') {
+
+                window.location.href = "admin.html";
+            }
+            else {
+
+                window.location.href = "index.html";
+            }
+
             console.log('Login Successful');
             console.log(`userID: ${username}`);
             localStorage.setItem("currentUserId", username);
             console.log("Stored in local storage as 'currentUserId'");
             document.getElementById("loginFailed").style.visibility = "hidden";
-            window.location.href = "index.html";
             return
         }
+
+        
+if(usernameToDisplay == null ){
+    window.alert('You are already logged in.')
+    if (username == 'admin' && password == 'admin') {
+
+        window.location.href = "admin.html";
+    }
+    else {
+
+        window.location.href = "index.html";
+    }
+}
+
+
     }
     
     console.error("Login Failed - Details incorrect")
     document.getElementById("loginFailed").style.visibility = "visible";
 }
+
+
+let usernameToDisplay = localStorage.getItem('currentUserId');
+document.getElementById("displayUsername").innerHTML = usernameToDisplay;

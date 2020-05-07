@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet" type="text/css">
+
+
+    <!-- <script src="js/app.js"></script> -->
+    <title>Admin | University Of Hull Catering Shop</title>
+</head>
+
+<body style="background-color: white;">
+    <header>
+        <div class="overlay">
+            <nav>
+                <h2>UNIVERSITY OF HULL CATERING SHOP</h2>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span>Home</span>
+                        </a></li>
+                    <li>
+                        <a href="about.html">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <ion-icon name="help-circle-outline"></ion-icon>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                    <li class="cart">
+                        <a href="shoppingCart.html">
+                            <ion-icon name="cart-outline"></ion-icon>
+                            Cart (<span>0</span>)
+                        </a>
+                    </li>
+                </ul>
+                <p>Hello, <span id="displayUsername"></span>!</p>
+            </nav>
+        </div>
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="tab" style="background-color: black;">
+        <button disabled></button>
+        <button class="tablinks" onclick="openTab(event, 'products')" >Products</button>
+        <button class="tablinks" onclick="openTab(event, 'stock')" id="defaultOpen">Stock</button>
+        <button class="tablinks" onclick="openTab(event, 'orders')">Orders</button>
+    </div>
+    <div class="allTabs">
+        <div id="products" class="tabcontent">
+            <br />
+            <br />
+            <center>
+                <h1>Products</h1>
+            </center>
+            <div class="container">
+                <br />
+                <br />
+                <div class="products-table"></div>
+            </div>
+        </div>
+        <div id="stock" class="tabcontent">
+            <br />
+            <br />
+            <center>
+                <h1>Stock</h1>
+            </center>
+            <div class="stock-container">
+                <br />
+                <button class="accordion">Soft Drinks</button>
+                <div class="panel">
+                    <div class="container">
+                        <br />
+                        <br />
+                        <div class="softDrinks-table"></div>
+                    </div>
+                    <br/>
+                </div>
+
+                <button class="accordion">Hot Drinks</button>
+                <div class="panel">
+                    <div class="container">
+                        <br />
+                        <br />
+                        <div class="hotDrinks-table"></div>
+                    </div>
+                    <br/>
+                </div>
+
+                <button class="accordion">Desserts</button>
+                <div class="panel">
+                    <div class="container">
+                        <br />
+                        <br />
+                        <div class="desserts-table"></div>
+                    </div>
+                    <br/>
+                </div>
+
+                <button class="accordion">Sandwiches</button>
+                <div class="panel">
+                    <div class="container">
+                        <br />
+                        <br />
+                        <div class="sandwiches-table"></div>
+                    </div>
+                    <br/>
+                </div>
+
+                <button class="accordion" id="snacks">Snacks</button>
+                <div class="panel">
+                    <div class="container">
+                        <br />
+                        <br />
+                        <div class="snacks-table"></div>
+                    </div>
+                    <br/>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="orders" class="tabcontent">
+            <br />
+            <br />
+            <center>
+                <h1>Orders</h1>
+            </center>
+        </div>
+    </div>
+    <script src="js/home.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body>
+
+</html>
