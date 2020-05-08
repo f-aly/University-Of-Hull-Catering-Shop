@@ -315,7 +315,7 @@ function openOrders(evt, orderState) {
   }
   document.getElementById("defaultOpenOrder").click();
 
-  
+let orderContainer = document.querySelector('.order-container')
 let pendingTable = document.querySelector('.pending-table')
 let beingPreparedTable = document.querySelector('.being-prepared-table')
 let readyTable = document.querySelector('.ready-table')
@@ -404,5 +404,5 @@ if (currentUser == 'admin') {
 }
 
 else {
-    stockContainer.innerHTML = `<center><h1 style="color: red">You do not have access to this information.</h1></center>`
+    orderContainer.innerHTML = `<center><h1 style="color: red">You do not have access to this information.</h1></center>`
 }
