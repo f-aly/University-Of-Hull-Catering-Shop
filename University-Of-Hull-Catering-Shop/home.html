@@ -6,21 +6,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
   <link href="css/home.css" rel="stylesheet" type="text/css">
   <title>University Of Hull Catering Shop</title>
+
 </head>
 
 <body>
 
   <div class="homeDiv">
-    <h1>Welcome.</h1>
+    <h1 id="title">Welcome.</h1>
     <br/>
-    <h2>Universtiy Catering Service, here for you.</h2>
+    <h2 id="subtitle">Universtiy Catering Service, here for you.</h2>
     <br/>
-    <p>We're all providing you with high-quality, handmade,
+    <p>We promise to provide you with high-quality, handmade,
       fresh food. You can order any item and pay online
       by PayPal or pay in person at collection.</p>
       <br/>
-    <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto; border: 2px solid; border-color: white">Login</button>
+    <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto; min-width: 163px; border: 2px solid; border-color: white"  id="loginButton">Login</button>
+    <div>
+    <button style="width:auto; min-width: 163px; border: 2px solid; border-color: white; visibility: hidden;"  id="logoutButton">Log Out</button>
 
+
+    </div>
     </div>
   <div id="loginModal" class="modal">
     <form class="modal-content animate" action="index.html" method="post">
@@ -48,7 +53,32 @@
   <script src="js/home.js">
 
   </script>
+  <script>
+    let username = localStorage.getItem('currentUserId');
 
+    console.log(username)
+    if(username != null){
+      console.log('login')
+      document.getElementById('title').innerHTML = 'You Are Already Logged In'
+      document.getElementById('title').style.color = '#84E900'
+      document.getElementById('subtitle').innerHTML = `Hello, ${username}!`
+      document.getElementById('loginButton').innerHTML = 'Continue Shopping'
+      document.getElementById('loginButton').onclick = function() {
+        if (username == 'admin')
+          window.location.href = 'admin.html'
+        else
+          window.location.href = 'index.html'
+      }
+      document.getElementById('logoutButton').style.visibility = 'visible';
+      document.getElementById('logoutButton').onclick = function() {
+        localStorage.removeItem('currentUserId');
+        window.location.reload();
+      }
+    }
+    else {
+      console.log('no login')        
+    }
+  </script>
 </body>
 
 </html>

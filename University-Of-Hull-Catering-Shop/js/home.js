@@ -51,17 +51,16 @@ function getInfo() {
         }
 
         
-if(usernameToDisplay == null ){
-    window.alert('You are already logged in.')
-    if (username == 'admin' && password == 'admin') {
+// if(usernameToDisplay == null ){
+//     if (username == 'admin' && password == 'admin') {
 
-        window.location.href = "admin.html";
-    }
-    else {
+//         window.location.href = "admin.html";
+//     }
+//     else {
 
-        window.location.href = "index.html";
-    }
-}
+//         window.location.href = "index.html";
+//     }
+// }
 
 
     }
