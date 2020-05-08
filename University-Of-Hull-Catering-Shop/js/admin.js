@@ -157,9 +157,9 @@ for (i = 0; i < acc.length; i++) {
 let stockContainer = document.querySelector(".stock-container");
 let softDrinksStockTable = document.querySelector('.softDrinks-table')
 let hotDrinksStockTable = document.querySelector('.hotDrinks-table');
-let dessertStockTable = document.querySelector('.desserts-table')
-let sandwichesStockTable = document.querySelector('.sandwiches-table')
-let snacksStockTable = document.querySelector('.snacks-table')
+let dessertStockTable = document.querySelector('.desserts-table');
+let sandwichesStockTable = document.querySelector('.sandwiches-table');
+let snacksStockTable = document.querySelector('.snacks-table');
 if (currentUser == 'admin') {
 
     softDrinksStockTable.innerHTML = `
@@ -251,7 +251,6 @@ if (currentUser == 'admin') {
     </tr>
     </table>
     `;
-
     
   sandwichesStockTable.innerHTML = `
   <table>
@@ -292,6 +291,116 @@ snacksStockTable.innerHTML = `
 </tr>
 `;
 
+}
+
+else {
+    stockContainer.innerHTML = `<center><h1 style="color: red">You do not have access to this information.</h1></center>`
+}
+
+
+/* ///////////////////////////// ORDERS //////////////////// */
+
+function openOrders(evt, orderState) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("v-tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("v-tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(orderState).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  document.getElementById("defaultOpenOrder").click();
+
+  
+let pendingTable = document.querySelector('.pending-table')
+let beingPreparedTable = document.querySelector('.being-prepared-table')
+let readyTable = document.querySelector('.ready-table')
+let collectedTable = document.querySelector('.collected-table')
+let cancelledTable = document.querySelector('.cancelled-table')
+
+if (currentUser == 'admin') {
+
+    pendingTable.innerHTML = `
+      <table>
+      <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Order Summary</th>
+          <th>Total Cost</th>
+          <th>Payment Type</th>
+          <th>&nbsp;</th>
+      </tr>
+      <tr>
+          <td>785412</td>
+          <td style="color: green">buyer1</td>
+          <td>
+                x1 Black Coffee<br/>x1 Cookie
+          </td>
+          <td>2.70</td>
+          <td>Paypal</td>
+          <td><a href="#">Move to Being Prepared</a></td>
+      </tr>
+  </table>
+      `;
+
+      beingPreparedTable.innerHTML = `
+      <table>
+      <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Order Summary</th>
+          <th>Total Cost</th>
+          <th>Payment Type</th>
+          <th>&nbsp;</th>
+      </tr>
+      <tr>
+          <td>985647</td>
+          <td style="color: green">buyer2</td>
+          <td>
+                x1 Tea<br/>x1 Brownie
+          </td>
+          <td>ADD COST/td>
+          <td>Paypal</td>
+          <td><a href="#">Move to Ready</a></td>
+      </tr>
+      <tr>
+          <td>214563</td>
+          <td style="color: green">buyer3</td>
+          <td>
+                x1 MT&P Sandwich<br/>x1 7-Up<br/>x1 Crisps
+          </td>
+          <td>ADD COST/td>
+          <td>Cash</td>
+          <td><a href="#">Move to Ready</a></td>
+      </tr>
+  </table>
+      `;
+
+      readyTable.innerHTML = `
+      <table>
+      <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Order Summary</th>
+          <th>Total Cost</th>
+          <th>Payment Type</th>
+      </tr>
+      <tr>
+          <td>213325</td>
+          <td style="color: green">buyer8</td>
+          <td>
+                x1 Chocolate Mousse<br/>
+                x1 Black Coffee
+          </td>
+          <td>ADD COST/td>
+          <td>Paypal</td>
+      </tr>
+  </table>
+      `;
 }
 
 else {

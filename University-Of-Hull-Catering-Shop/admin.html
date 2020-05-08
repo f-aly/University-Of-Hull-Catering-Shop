@@ -57,8 +57,8 @@
     <div class="tab" style="background-color: black;">
         <button disabled></button>
         <button class="tablinks" onclick="openTab(event, 'products')" >Products</button>
-        <button class="tablinks" onclick="openTab(event, 'stock')" id="defaultOpen">Stock</button>
-        <button class="tablinks" onclick="openTab(event, 'orders')">Orders</button>
+        <button class="tablinks" onclick="openTab(event, 'stock')">Stock</button>
+        <button class="tablinks" onclick="openTab(event, 'orders')" id="defaultOpen">Orders</button>
     </div>
     <div class="allTabs">
         <div id="products" class="tabcontent">
@@ -140,6 +140,38 @@
             <center>
                 <h1>Orders</h1>
             </center>
+            <br/>
+            <div class="order-container">
+            <div class="v-tab">
+                <button class="v-tablinks" onclick="openOrders(event, 'Pending')" id="defaultOpenOrder">Pending</button>
+                <button class="v-tablinks" onclick="openOrders(event, 'Being-Prepared')">Being Prepared</button>
+                <button class="v-tablinks" onclick="openOrders(event, 'Ready')">Ready</button>
+                <button class="v-tablinks" onclick="openOrders(event, 'Collected')">Collected</button>
+              </div>
+              
+            <div id="Pending" class="v-tabcontent">
+                <div class="container">
+                    <div class="pending-table"></div>
+                </div>
+            </div>
+              
+            <div id="Being-Prepared" class="v-tabcontent">
+                <div class="container">
+                    <div class="being-prepared-table"></div>
+                </div>
+            </div>
+            <div id="Ready" class="v-tabcontent">
+                <div class="container">
+                    <div class="ready-table"></div>
+                </div>
+            </div>
+
+            <div id="Collected" class="v-tabcontent">
+                <div class="container">
+                    <div class="collected-table"></div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
     <script src="js/home.js"></script>
