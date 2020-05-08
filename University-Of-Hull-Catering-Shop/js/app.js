@@ -479,3 +479,30 @@ paypal.Button.render({
     });
   }
 }, '#paypal-button');
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+/////////////// LOG OUT  /////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+function logOut() {
+  // if(username == 'admin'){
+  //     localStorage.removeItem('currentUserId');
+  //     window.location.reload();
+  // }
+  // else {
+  //     var deleteCart = prompt('Would you like to clear the cart? [Y/N]')
+  //     if (deleteCart == 'Y'){
+  //         localStorage.clear()
+  //         window.location.href = 'home.html'
+  //     }
+  //     else if(deleteCart == 'N'){
+  //         localStorage.removeItem(currentUserId)
+  //         localStorage.removeItem(orderRef)
+  //         window.location.href = 'home.html'
+  //     }
+  // }
+  localStorage.removeItem('currentUserId')
+  window.location.href = 'home.html'
+}

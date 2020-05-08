@@ -373,7 +373,7 @@ if (currentUser == 'admin') {
           <td>
                 x1 MT&P Sandwich<br/>x1 7-Up<br/>x1 Crisps
           </td>
-          <td>ADD COST/td>
+          <td>4.15</td>
           <td>Cash</td>
           <td><a href="#">Move to Ready</a></td>
       </tr>
@@ -388,6 +388,7 @@ if (currentUser == 'admin') {
           <th>Order Summary</th>
           <th>Total Cost</th>
           <th>Payment Type</th>
+          <th></th>
       </tr>
       <tr>
           <td>213325</td>
@@ -396,7 +397,61 @@ if (currentUser == 'admin') {
                 x1 Chocolate Mousse<br/>
                 x1 Black Coffee
           </td>
-          <td>ADD COST/td>
+          <td>4.70</td>
+          <td>Paypal</td>
+          <td><a href='#'>Move to Collected</a></td>
+      </tr>
+  </table>
+      `;
+
+      collectedTable.innerHTML = `
+      <table>
+      <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Order Summary</th>
+          <th>Total Cost</th>
+          <th>Payment Type</th>
+      </tr>
+      <tr>
+          <td>985476</td>
+          <td style="color: green">buyer10</td>
+          <td>
+                x1 Chocolate Mousse<br/>
+                x1 Black Coffee
+          </td>
+          <td>4.70</td>
+          <td>Paypal</td>
+      </tr>
+      <tr>
+          <td>456325</td>
+          <td style="color: green">buyer7</td>
+          <td>
+                x1 Black Coffee
+          </td>
+          <td>1.20</td>
+          <td>Cash</td>
+      </tr>
+  </table>
+      `;
+
+      cancelledTable.innerHTML = `
+      <table>
+      <tr>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Order Summary</th>
+          <th>Total Cost</th>
+          <th>Payment Type</th>
+      </tr>
+      <tr>
+          <td>214232</td>
+          <td style="color: green">buyer50</td>
+          <td>
+                x1 Chocolate Mousse<br/>
+                x1 Black Coffee
+          </td>
+          <td>4.70</td>
           <td>Paypal</td>
       </tr>
   </table>

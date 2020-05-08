@@ -42,7 +42,11 @@
                         </a>
                     </li>
                 </ul>
-                <p>Hello, <span id="displayUsername"></span>!</p>
+                <div style="border: 2px solid; border-color: white; padding: 5px">
+                    <p>Hello, <span id="displayUsername"></span>!</p>
+                    <hr />
+                    <a onclick='logOut()' class='logoutButton'>Log Out</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -147,7 +151,8 @@
                 <button class="v-tablinks" onclick="openOrders(event, 'Being-Prepared')">Being Prepared</button>
                 <button class="v-tablinks" onclick="openOrders(event, 'Ready')">Ready</button>
                 <button class="v-tablinks" onclick="openOrders(event, 'Collected')">Collected</button>
-              </div>
+                <button class="v-tablinks" onclick="openOrders(event, 'Cancelled')">Cancelled</button>  
+            </div>
               
             <div id="Pending" class="v-tabcontent">
                 <div class="container">
@@ -160,6 +165,7 @@
                     <div class="being-prepared-table"></div>
                 </div>
             </div>
+
             <div id="Ready" class="v-tabcontent">
                 <div class="container">
                     <div class="ready-table"></div>
@@ -171,6 +177,13 @@
                     <div class="collected-table"></div>
                 </div>
             </div>
+
+            <div id="Cancelled" class="v-tabcontent">
+                <div class="container">
+                    <div class="cancelled-table"></div>
+                </div>
+            </div>
+
             </div>
         </div>
     </div>

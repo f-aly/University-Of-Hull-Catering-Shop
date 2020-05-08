@@ -136,3 +136,10 @@ span.password {
      float: none;
   }
 }
+
+
+  /*////////////*/
+
+  .logoutButton:hover {
+    color: blue;
+  }

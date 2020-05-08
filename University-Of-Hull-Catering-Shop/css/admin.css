@@ -302,3 +302,10 @@ th {
     border-left: none;
     height: 100%;
   }
+
+
+  /*////////////*/
+
+  .logoutButton:hover {
+    color: blue;
+  }

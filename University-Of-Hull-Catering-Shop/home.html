@@ -62,7 +62,10 @@
       document.getElementById('title').innerHTML = 'You Are Already Logged In'
       document.getElementById('title').style.color = '#84E900'
       document.getElementById('subtitle').innerHTML = `Hello, ${username}!`
-      document.getElementById('loginButton').innerHTML = 'Continue Shopping'
+      if (username == 'admin')
+        document.getElementById('loginButton').innerHTML = 'Go To Admin Page'
+      else
+        document.getElementById('loginButton').innerHTML = 'Continue Shopping'
       document.getElementById('loginButton').onclick = function() {
         if (username == 'admin')
           window.location.href = 'admin.html'
@@ -75,6 +78,8 @@
         window.location.reload();
       }
     }
+      
+    
     else {
       console.log('no login')        
     }
