@@ -74,7 +74,7 @@
       }
       document.getElementById('logoutButton').style.visibility = 'visible';
       document.getElementById('logoutButton').onclick = function() {
-        localStorage.removeItem('currentUserId');
+        localStorage.clear()
         window.location.reload();
       }
     }
