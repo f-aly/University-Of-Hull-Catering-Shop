@@ -93,10 +93,6 @@ function logOut() {
     //         window.location.href = 'home.html'
     //     }
     // }
-  window.location.href = "index.html";
-  localStorage.removeItem('__paypal_storage__');
-  localStorage.removeItem('productsInCart');
-  localStorage.removeItem('orderRef');
-  localStorage.removeItem('totalCost');
-  localStorage.removeItem('cartNumbers');
+  window.location.href = "home.html";
+  localStorage.clear()
 }

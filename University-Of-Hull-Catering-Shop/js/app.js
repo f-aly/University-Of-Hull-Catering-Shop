@@ -499,9 +499,10 @@ function logOut() {
   //     }
   // }
   window.location.href = "home.html";
-  localStorage.removeItem('__paypal_storage__');
-  localStorage.removeItem('productsInCart');
-  localStorage.removeItem('orderRef');
-  localStorage.removeItem('totalCost');
-  localStorage.removeItem('cartNumbers');
+  localStorage.clear()
+  // localStorage.removeItem('__paypal_storage__');
+  // localStorage.removeItem('productsInCart');
+  // localStorage.removeItem('orderRef');
+  // localStorage.removeItem('totalCost');
+  // localStorage.removeItem('cartNumbers');
 }
