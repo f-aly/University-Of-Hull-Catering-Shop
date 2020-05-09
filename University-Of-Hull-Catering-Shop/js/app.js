@@ -418,14 +418,6 @@ function makeAnOrderId() {
   }
   localStorage.setItem('orderRef', orderRef);
 }
-function clearStorageAndStartAgain() {
-  window.location.href = "index.html";
-  localStorage.removeItem('__paypal_storage__');
-  localStorage.removeItem('productsInCart');
-  localStorage.removeItem('orderRef');
-  localStorage.removeItem('totalCost');
-  localStorage.removeItem('cartNumbers');
-}
 
 // ======================================================
 // =============== TO RUN BEFORE PAGE LOADS =============
@@ -507,6 +499,10 @@ function logOut() {
   //         window.location.href = 'home.html'
   //     }
   // }
-  localStorage.removeItem('currentUserId')
-  window.location.href = 'home.html'
+  window.location.href = "home.html";
+  localStorage.removeItem('__paypal_storage__');
+  localStorage.removeItem('productsInCart');
+  localStorage.removeItem('orderRef');
+  localStorage.removeItem('totalCost');
+  localStorage.removeItem('cartNumbers');
 }
