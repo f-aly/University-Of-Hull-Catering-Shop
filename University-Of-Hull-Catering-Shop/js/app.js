@@ -454,7 +454,6 @@ paypal.Button.render({
   // Set up a payment
   payment: function (data, actions) {
     let totalCost = localStorage.getItem('totalCost');
-    let orderDescription = localStorage.getItem('')
     totalCost = parseFloat(totalCost);
 
     return actions.payment.create({
@@ -464,7 +463,7 @@ paypal.Button.render({
           currency: 'GBP'
         },
       }],
-      note_to_payer: document.getElementById('Order-To-Mail').textContent + document.getElementById('Summary-To-Mail').textContent
+      note_to_payer:'Thanks for your purchase'
     });
   },
   onAuthorize: function (data, actions) {
