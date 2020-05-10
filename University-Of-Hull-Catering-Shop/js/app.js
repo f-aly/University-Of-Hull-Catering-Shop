@@ -273,8 +273,6 @@ function generateOrderSummary() {
   let proceedToPaymentContainer = document.querySelector(".proceedToPayment");
   let cartCost = localStorage.getItem('totalCost');
   
-  let orderToMail = document.querySelector(".order-to-mail");
-  let summaryToMail = document.querySelector(".summary-to-mail");
 
   if (cartItems && summaryContainer) {
     summaryContainer.innerHTML = '';
@@ -290,19 +288,11 @@ function generateOrderSummary() {
         </tr>
       `;
       
-      orderToMail.innerHTML = `<span>Order Reference #${orderReference}</span><br/>`;
-      summaryToMail.innerHTML += `          
-          <span>x${item.inCart}</span>
-           - <span>${item.name}</span>
-           - <span>£ ${item.price}</span><br/>
-       
-       `;
     }); 
-    
     proceedToPaymentContainer.innerHTML = `
-    <h3>
-       Total to Pay:  £ ${cartCost}</h3>
-   `;
+       <h3>
+          Total to Pay:  £ ${cartCost}</h3>
+      `;
         
 
     // var orderInLocal;
@@ -363,8 +353,8 @@ function displayCashOrderSummary() {
             <h2>Order Summary</h2>
             <br/>
           `;
-          orderToMail.innerHTML = `<span  id="Order-To-Mail">Order Reference #${orderReference}</span><br/><br/>`;
-          generateOrderSummary();
+          // orderToMail.innerHTML = `<span  id="Order-To-Mail">Order Reference #${orderReference}</span><br/><br/>`;
+          // generateOrderSummary();
   } 
 
 }

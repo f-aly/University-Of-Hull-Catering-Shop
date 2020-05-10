@@ -75,6 +75,9 @@
                 <!-- populated with javascript -->
             </div>
         </table>
+        <div id='total-to-pay'>
+
+        </div>
         <div class="paymentButtons">
             <button  class="cartCheckoutButtons buttons" onclick="clearStorageAndStartAgain()">
                 <h4>Make A New Order</h4>
@@ -84,6 +87,10 @@
 
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script>
+        let cartCost = localStorage.getItem('totalCost');
+        document.getElementById('total-to-pay').innerHTML = `<h4>Total to pay: £ ${cartCost}</h4>`
+    </script>
 </body>
 
 </html>
