@@ -139,31 +139,31 @@ for (let i = 0; i < carts.length; i++) {
   carts[i].addEventListener('click', () => {
     //alert('Succesfully added to cart!');
     console.log('Succesfully added to cart!: ' + products[i].name);
-    cartNumbers(products[i]);
+    cartDetails(products[i]);
     totalCost(products[i]);
   });
 }
 
 function onLoadCartNumber() {
-  let productNumbers = localStorage.getItem('cartNumbers');
+  let productNumbers = localStorage.getItem('cartDetails');
   if (productNumbers) {
     document.querySelector('.cart span').textContent = productNumbers;
 
   }
 }
-function cartNumbers(product) {
+function cartDetails(product) {
   console.log('The product clicked: ', product);
-  let productNumbers = localStorage.getItem('cartNumbers');
+  let productNumbers = localStorage.getItem('cartDetails');
 
 
   productNumbers = parseInt(productNumbers);
   console.log("Local Storage Key: " + productNumbers);
   if (productNumbers) {
-    localStorage.setItem('cartNumbers', productNumbers + 1);
+    localStorage.setItem('cartDetails', productNumbers + 1);
     document.querySelector('.cart span').textContent = productNumbers + 1;
   } else {
     // if there is none
-    localStorage.setItem('cartNumbers', 1);
+    localStorage.setItem('cartDetails', 1);
     document.querySelector('.cart span').textContent = 1;
   }
 
@@ -248,7 +248,7 @@ function displayCart() {
         <button class="cartCheckoutButtons buttons" onclick="window.location.href='index.html'">
           <h4>Continue Shopping</h4>
         </button>
-        <button class="cartCheckoutButtons buttons" onclick="window.location.href='payment.html'">
+        <button class="cartCheckoutButtons buttons" onclick="window.location.href='../University-Of-Hull-Catering-Shop/Payment-Pages/proceedToPayment.html'">
           <h4>Proceed to Payment</h4>
         </button>
       </div>   
@@ -270,7 +270,7 @@ function generateOrderSummary() {
   cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js  
   let summaryContainer = document.querySelector(".summary-container"); //checks if products-container exists on page
 
-  let proceedToPaymentContainer = document.querySelector(".proceedToPayment");
+  let paymentContainer = document.querySelector(".payment-container");
   let cartCost = localStorage.getItem('totalCost');
   
 
@@ -289,7 +289,7 @@ function generateOrderSummary() {
       `;
       
     }); 
-    proceedToPaymentContainer.innerHTML = `
+    paymentContainer.innerHTML = `
        <h3>
           Total to Pay:  £ ${cartCost}</h3>
       `;
@@ -388,15 +388,17 @@ function displayPaypalOrderSummary() {
 var payedByCashBool = true;
 
 function payedByCash() {
-  window.location.href = "cashCheckoutSuccessful.html";
+  localStorage.setItem('orderState', 'Successful');
+  window.location.href = "../Payment-Pages/cashCheckoutSuccessful.html";
   // makeAnOrderId();
-  payedByCash = true;
+ // payedByCash = true;
 }
 
 function payedByPayPal() {
-  window.location.href = "paypalCheckoutSuccessful.html";
+  localStorage.setItem('orderState', 'Successful');
+  window.location.href = "Payment-Pages/paypalCheckoutSuccessful.html";
   //makeAnOrderId();
-  payedByCashBool = false;
+  // payedByCashBool = false;
 }
 
 function makeAnOrderId() { 
@@ -494,15 +496,16 @@ function logOut() {
   // localStorage.removeItem('productsInCart');
   // localStorage.removeItem('orderRef');
   // localStorage.removeItem('totalCost');
-  // localStorage.removeItem('cartNumbers');
+  // localStorage.removeItem('cartDetails');
 }
 
 
 function clearStorageAndStartAgain(){
-  window.location.href = "index.html";
+  window.location.href = "../index.html";
   localStorage.removeItem('__paypal_storage__');
   localStorage.removeItem('productsInCart');
   localStorage.removeItem('orderRef');
+  localStorage.removeItem('orderState'); 
   localStorage.removeItem('totalCost');
-  localStorage.removeItem('cartNumbers');   
+  localStorage.removeItem('cartDetails');   
 }

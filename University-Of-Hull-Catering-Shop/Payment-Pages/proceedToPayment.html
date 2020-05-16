@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@5.0.0/dist/ionicons.min.css" rel="stylesheet">
     </link>
-    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
 
     <title>University Of Hull Catering Shop | Shopping Cart </title>
 </head>
@@ -62,7 +62,7 @@
     <br />
     <h1>Cart Summary</h1>
     <br />
-    <div classs="generateSummary">
+    <div id="generateSummary">
         <table class="summary-container" style="width: 50%; float: left;">
             <div class="summary">
                 <!-- populated with javascript -->
@@ -70,11 +70,11 @@
         </table>
 
     </div>
-    <div class="proceedToPayment">
+    <div class="payment-container" id='payment-container'>
 
     </div>
 
-    <table>
+    <table id="payment-buttons">
         <tr>
             <td>
                 <button class="cartCheckoutButtons buttons" onclick="payedByCash()">
@@ -96,8 +96,21 @@
     </p> -->
 
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script>        
+        let orderDone = localStorage.getItem('orderState');
+        if (orderDone != 'Successful'){
+            document.getElementById('payment-buttons').style.visibility = 'hidden';
+            document.getElementById('payment-container').style.visibility = 'hidden';
+            document.getElementById('generateSummary').innerHTML = `
+                <center>
+                    <h3>Your order has already been made.</h3>  
+                    <h5>Please return to page confirmation page. </h5>  
+                </center>
+            `
+        }
+    </script>
 </body>
 
 </html>
