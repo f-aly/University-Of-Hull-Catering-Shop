@@ -199,7 +199,7 @@ li a {
     margin-left: 20px;
 }
 
-.add-cart {
+.add-to-cart {
     position: absolute;
     width: 100%;
     background-color: white;
@@ -210,12 +210,7 @@ li a {
     text-align: center;
 }
 
-.image:hover .cart1, .image:hover .cart2, .image:hover .cart3,
-.image:hover .cart4, .image:hover .cart5, .image:hover .cart6,
-.image:hover .cart7, .image:hover .cart8, .image:hover .cart9,
-.image:hover .cart10, .image:hover .cart11, .image:hover .cart12,
-.image:hover .cart13, .image:hover .cart14, .image:hover .cart15, .image:hover .cart16
- {
+.image:hover .add-to-cart{
     bottom: 50px;
     opacity: 1;
     padding: 10px;

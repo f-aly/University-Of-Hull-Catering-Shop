@@ -29,7 +29,7 @@ document.getElementById("displayUsername").innerHTML = usernameToDisplay;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // get all elements with this class
-let carts = document.querySelectorAll('.add-cart');
+let carts = document.querySelectorAll('.add-to-cart');
 
 let products = [
   {
