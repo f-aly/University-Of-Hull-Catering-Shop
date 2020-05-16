@@ -37,97 +37,97 @@ if (currentUser == 'admin') {
           <td>Apple Juice</td>
           <td>Soft Drinks</td>
           <td>£ 1.00</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Orange Juice</td>
           <td>Soft Drinks</td>
           <td>£ 1.00</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>7-Up</td>
           <td>Soft Drinks</td>
           <td>£ 1.20</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Coca Cola</td>
           <td>Soft Drinks</td>
           <td>£ 1.20</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Sparkling Water</td>
           <td>Soft Drinks</td>
           <td>£ 0.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Still Water</td>
           <td>Soft Drinks</td>
           <td>£ 0.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Tea</td>
           <td>Hot Drinks</td>
           <td>£ 1.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Black Coffee</td>
           <td>Hot Drinks</td>
           <td>£ 1.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Caramel Macchiato</td>
           <td>Hot Drinks</td>
           <td>£ 2.15</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Brownie</td>
           <td>Desserts</td>
           <td>£ 1.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Chocolate Mousse</td>
           <td>Desserts</td>
           <td>£ 2.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Cookies</td>
           <td>Desserts</td>
           <td>£ 0.85</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>C&O Sandwich</td>
           <td>Sandwiches</td>
           <td>£ 2.95</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>E&C Sandwich</td>
           <td>Sandwiches</td>
           <td>£ 2.95</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>MT&P Sandwich</td>
           <td>Sandwiches</td>
           <td>£ 2.95</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
       <tr>
           <td>Crisps</td>
           <td>Snacks</td>
           <td>£ 0.65</td>
-          <td><a href="comingSoon.html">Change Details</a></td>
+          <td><a href="#">Change Details</a></td>
       </tr>
   </table>
       `;
