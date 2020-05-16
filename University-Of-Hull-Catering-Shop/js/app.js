@@ -390,15 +390,11 @@ var payedByCashBool = true;
 function payedByCash() {
   localStorage.setItem('orderState', 'Successful');
   window.location.href = "../University-Of-Hull-Catering-Shop/Payment-Pages/cashCheckoutSuccessful.html";
-  // makeAnOrderId();
- // payedByCash = true;
 }
 
 function payedByPayPal() {
   localStorage.setItem('orderState', 'Successful');
   window.location.href = "../University-Of-Hull-Catering-Shop/Payment-Pages/paypalCheckoutSuccessful.html";
-  //makeAnOrderId();
-  // payedByCashBool = false;
 }
 
 function makeAnOrderId() { 
