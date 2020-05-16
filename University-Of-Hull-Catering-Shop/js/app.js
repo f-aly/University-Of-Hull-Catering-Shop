@@ -248,7 +248,7 @@ function displayCart() {
         <button class="cartCheckoutButtons buttons" onclick="window.location.href='index.html'">
           <h4>Continue Shopping</h4>
         </button>
-        <button class="cartCheckoutButtons buttons" onclick="window.location.href='../University-Of-Hull-Catering-Shop/Payment-Pages/proceedToPayment.html'">
+        <button class="cartCheckoutButtons buttons" onclick="window.location.href='../University-Of-Hull-Catering-Shop/proceedToPayment.html'">
           <h4>Proceed to Payment</h4>
         </button>
       </div>   
@@ -389,14 +389,14 @@ var payedByCashBool = true;
 
 function payedByCash() {
   localStorage.setItem('orderState', 'Successful');
-  window.location.href = "../Payment-Pages/cashCheckoutSuccessful.html";
+  window.location.href = "../University-Of-Hull-Catering-Shop/Payment-Pages/cashCheckoutSuccessful.html";
   // makeAnOrderId();
  // payedByCash = true;
 }
 
 function payedByPayPal() {
   localStorage.setItem('orderState', 'Successful');
-  window.location.href = "Payment-Pages/paypalCheckoutSuccessful.html";
+  window.location.href = "../University-Of-Hull-Catering-Shop/Payment-Pages/paypalCheckoutSuccessful.html";
   //makeAnOrderId();
   // payedByCashBool = false;
 }
@@ -447,7 +447,8 @@ paypal.Button.render({
   payment: function (data, actions) {
     let totalCost = localStorage.getItem('totalCost');
     totalCost = parseFloat(totalCost);
-
+    let orderReference = localStorage.getItem('orderRef')
+    orderReference = JSON.parse(orderReference)
     return actions.payment.create({
       transactions: [{
         amount: {
@@ -455,7 +456,7 @@ paypal.Button.render({
           currency: 'GBP'
         },
       }],
-      note_to_payer:'Thanks for your purchase'
+      note_to_payer:'Order Reference #' + orderReference
     });
   },
   onAuthorize: function (data, actions) {
@@ -490,7 +491,7 @@ function logOut() {
   //         window.location.href = 'home.html'
   //     }
   // }
-  window.location.href = "home.html";
+  window.location.href = "../University-Of-Hull-Catering-Shop/home.html";
   localStorage.clear()
   // localStorage.removeItem('__paypal_storage__');
   // localStorage.removeItem('productsInCart');
