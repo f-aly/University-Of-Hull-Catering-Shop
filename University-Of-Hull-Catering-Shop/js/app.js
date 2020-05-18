@@ -1,3 +1,11 @@
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Code snippets references:
+  - W3School: How To - Tabs [online] Available at: https://www.w3schools.com/howto/howto_js_tabs.asp [Accessed 20 April 2020]
+  - PayPal: PayPal Checkout Integration [online] Available at: https://developer.paypal.com/docs/archive/checkout/integrate/# [Accessed 25 April 2020] 
+  - Telmo Sampaio: Shopping Cart Tutorial [online] Available at: https://www.youtube.com/watch?v=B20Getj_Zk4&t=9s [Accessed 29 April 2020]
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -137,7 +145,6 @@ let products = [
 
 for (let i = 0; i < carts.length; i++) {
   carts[i].addEventListener('click', () => {
-    //alert('Succesfully added to cart!');
     console.log('Succesfully added to cart!: ' + products[i].name);
     cartDetails(products[i]);
     totalCost(products[i]);
@@ -194,11 +201,10 @@ function setItems(product) {
 }
 
 function totalCost(product) {
-  //console.log("PRICE IS", product.price);
   let cartCost = localStorage.getItem('totalCost');
 
   if (cartCost != null) {
-    cartCost = parseFloat(cartCost);// because when getting it from lcoal storage, it's a string by default
+    cartCost = parseFloat(cartCost);// because when getting it from local storage, it's a string by default
     product.price = parseFloat(product.price);
     var newCost = cartCost + product.price;
     newCost = newCost.toFixed(2);
@@ -212,7 +218,7 @@ function totalCost(product) {
 function displayCart() {
   let cartItems = localStorage.getItem("productsInCart");
   cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js
-  let productContainer = document.querySelector(".products-container"); //checks if products-container exists on page
+  let productContainer = document.querySelector(".products-container"); 
   let cartCost = localStorage.getItem('totalCost');
   if (cartItems && productContainer) {
     productContainer.innerHTML = '';
@@ -268,8 +274,8 @@ function generateOrderSummary() {
   let orderReference = localStorage.getItem("orderRef");
   orderReference = JSON.parse(orderReference);
   let cartItems = localStorage.getItem("productsInCart");
-  cartItems = JSON.parse(cartItems) // when object comes from localstoragei ts json so we convert it to js  
-  let summaryContainer = document.querySelector(".summary-container"); //checks if products-container exists on page
+  cartItems = JSON.parse(cartItems) // when object comes from localstorage its json so we convert it to js  
+  let summaryContainer = document.querySelector(".summary-container"); 
 
   let paymentContainer = document.querySelector(".payment-container");
   let cartCost = localStorage.getItem('totalCost');
@@ -294,28 +300,6 @@ function generateOrderSummary() {
        <h3>
           Total to Pay:  £ ${cartCost}</h3>
       `;
-        
-
-    // var orderInLocal;
-    // if (document.getElementById("Order-To-Mail").innerHTML == null)
-    //   orderInLocal = 0; 
-    // else 
-    //   orderInLocal = document.getElementById("Order-To-Mail").innerHTML;
-      
-    // var summaryInLocal = document.getElementById("Summary-To-Mail").innerHTML;
-    // var SendToLocal = orderInLocal + summaryInLocal;
-    // localStorage.setItem("OrderSummaryForPayPal", SendToLocal);
-
-
-
-      
-   
-
-
-  // localStorage.setItem("inPayPalEmail", toStoreInLocal);
-  // 
-  // console.log(toStoreInLocal);
-  // 
   }
   else {
     summaryContainer.innerHTML += `
@@ -344,7 +328,7 @@ function displayCashOrderSummary() {
   let orderToMail = document.querySelector(".order-to-mail");
 
 
-  if (orderReference && orderReferenceContainer && payedByCashBool == true) {
+  if (orderReference && orderReferenceContainer) {
     orderReferenceContainer.innerHTML = `
             <br/>
             <h2>Order Reference #${orderReference}</h2>
@@ -364,11 +348,12 @@ function displayPaypalOrderSummary() {
   let orderReference = localStorage.getItem('orderRef');
   orderReference = JSON.parse(orderReference);
   let orderReferenceContainer = document.querySelector('.orderPaypalReference-container')
-  if (orderReference && orderReferenceContainer && payedByCashBool == true) {
+  if (orderReference && orderReferenceContainer) {
     orderReferenceContainer.innerHTML = `
             <br/>
             <h2>Order Reference #${orderReference}</h2>
             <h2>Payment Method: Paypal</h2>
+            <h3>Transaction ID: 62A68556JW177224T</h3>
             <hr />
             <br/>
             <h2>Order Summary</h2>
@@ -377,16 +362,7 @@ function displayPaypalOrderSummary() {
     generateOrderSummary();
   } 
 }
-/*
- - add order erference
- - try to use bools to make difference between paypal and cash payment
- - clear lcoalstorage and go back to main page if successful
 
- - implement paypal to take order elements for details
- - add paymentfailed 
-*/
-
-var payedByCashBool = true;
 
 function payedByCash() {
   localStorage.setItem('orderState', 'Successful');
@@ -420,7 +396,7 @@ displayCartSummary();
 
 
 //////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
+/////////////  PAYPAL CHECKOUT INTEGRATETION  ////////////
 //////////////////////////////////////////////////////////
 
 
@@ -452,7 +428,7 @@ paypal.Button.render({
           total: totalCost,
           currency: 'GBP'
         },
-        description: paypalDescription
+        description: 'Order Reference #' + orderReference + ': ' + paypalDescription
       }],
       note_to_payer: 'Order Reference #' + orderReference
     });
@@ -460,7 +436,6 @@ paypal.Button.render({
   onAuthorize: function (data, actions) {
     return actions.payment.execute().then(function () {
       // Show a confirmation message to the buyer
-      payedByCashBool = false;
       payedByPayPal();
     });
   }
@@ -473,32 +448,11 @@ paypal.Button.render({
 //////////////////////////////////////////////////
 
 function logOut() {
-  // if(username == 'admin'){
-  //     localStorage.removeItem('currentUserId');
-  //     window.location.reload();
-  // }
-  // else {
-  //     var deleteCart = prompt('Would you like to clear the cart? [Y/N]')
-  //     if (deleteCart == 'Y'){
-  //         localStorage.clear()
-  //         window.location.href = 'home.html'
-  //     }
-  //     else if(deleteCart == 'N'){
-  //         localStorage.removeItem(currentUserId)
-  //         localStorage.removeItem(orderRef)
-  //         window.location.href = 'home.html'
-  //     }
-  // }
   window.location.href = "../University-Of-Hull-Catering-Shop/home.html";
   localStorage.clear()
-  // localStorage.removeItem('__paypal_storage__');
-  // localStorage.removeItem('productsInCart');
-  // localStorage.removeItem('orderRef');
-  // localStorage.removeItem('totalCost');
-  // localStorage.removeItem('cartDetails');
 }
 
-
+// clear everything except for currentUserID
 function clearStorageAndStartAgain(){
   window.location.href = "../index.html";
   localStorage.removeItem('__paypal_storage__');
