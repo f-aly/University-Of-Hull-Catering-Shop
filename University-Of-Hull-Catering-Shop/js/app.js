@@ -260,6 +260,7 @@ function displayCart() {
   }
 }
 
+var paypalDescription = '';
 // ==========================================
 // ======= CART SUMMARY - PAYMENT PAGE ======
 // ==========================================
@@ -280,14 +281,14 @@ function generateOrderSummary() {
       let itemTotalPrice = item.inCart * item.price;
       itemTotalPrice = parseFloat(itemTotalPrice).toFixed(2);
       summaryContainer.innerHTML += `
-        <tr>
+        <tr id='paypalDescription'>
           <td>&nbsp;</td>
           <td>x${item.inCart}</td>
           <td>${item.name}</td>
           <td>£ ${item.price}</td>
         </tr>
       `;
-      
+      paypalDescription += `x${item.inCart} - ${item.name} - £ ${item.price} <br/>`
     }); 
     paymentContainer.innerHTML = `
        <h3>
@@ -451,8 +452,9 @@ paypal.Button.render({
           total: totalCost,
           currency: 'GBP'
         },
+        description: paypalDescription
       }],
-      note_to_payer:'Order Reference #' + orderReference
+      note_to_payer: 'Order Reference #' + orderReference
     });
   },
   onAuthorize: function (data, actions) {
